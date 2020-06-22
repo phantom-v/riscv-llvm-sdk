@@ -45,7 +45,7 @@ namespace {
 
 }
 
-llvm::PassPluginLibraryInfo get$namePluginInfo() {
+llvm::PassPluginLibraryInfo $register() {
   return {LLVM_PLUGIN_API_VERSION, "$name", LLVM_VERSION_STRING,
           [](PassBuilder &PB) {
             PB.registerPipelineParsingCallback(
@@ -62,11 +62,12 @@ llvm::PassPluginLibraryInfo get$namePluginInfo() {
 
 extern "C" LLVM_ATTRIBUTE_WEAK ::llvm::PassPluginLibraryInfo
 llvmGetPassPluginInfo() {
-  return get$namePluginInfo();
+  return $register();
 }
-                ''').safe_substitute(name=p)
+                ''').safe_substitute(name=p, register="get"+p+"PluginInfo")
                 f.write(res)
                 print("[Tplt] " + p + " create")
             
         
+
 

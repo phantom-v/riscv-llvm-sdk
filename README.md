@@ -1,8 +1,6 @@
 # RISC-V LLVM SDK
 
-This repo supports a LLVM out-of-tree middle pass build framework.
-
-## How to Build LLVM
+## How to Build RISC-V LLVM
 ```bash
 # Test on Ubuntu18.04.4
 $ sudo apt install binutils build-essential libtool texinfo gzip zip unzip patchutils curl git \
