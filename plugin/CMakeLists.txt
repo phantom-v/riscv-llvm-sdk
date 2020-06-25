@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.4.3)
 project(MyTemplate)
 
 set(CMAKE_CXX_STANDARD 14 CACHE STRING "")
+# Build type
+if (NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Debug CACHE
+      STRING "Build type (default Debug):" FORCE)
+endif()
 
 set(LLVM_INCLUDE_DIR ""
         CACHE STRING "LLVM distribution install path")
@@ -10,6 +15,7 @@ set(LLVM_DIR ${LLVM_INCLUDE_DIR}/lib/cmake/llvm)
 find_package(LLVM REQUIRED CONFIG)
 message("
 ---------------- LLVM STATUS ----------------
+  Build Type  ${CMAKE_BUILD_TYPE}
   Path        ${LLVM_INCLUDE_DIR}
   Version     ${LLVM_PACKAGE_VERSION}
   CMake       ${LLVM_CMAKE_DIR}
